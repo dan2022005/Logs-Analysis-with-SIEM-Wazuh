@@ -24,9 +24,11 @@
 ### 2.1. Kịch bản tấn công vét cạn mật khẩu (SSH brute-force)
 
 **a) Mục tiêu**
+
 Trong môi trường thực nghiệm, kịch bản tấn công mô phỏng hành vi brute force SSH vào máy Ubuntu Client có địa chỉ IP `192.168.111.167`. Mục đích của kịch bản là dò tìm mật khẩu của máy Ubuntu Client và dữ liệu của cuộc tấn công sẽ phục vụ giám sát và phân tích.
 
 **b) Công cụ sử dụng**
+
 Trước khi tiến hành mô phỏng và đánh giá kịch bản tấn công, việc lựa chọn và chuẩn bị các phần mềm, công cụ hỗ trợ là bước quan trọng nhằm bảo đảm quá trình thực nghiệm diễn ra chính xác và hiệu quả. Các phần mềm được sử dụng trong đề tài bao gồm những công cụ phục vụ cho việc xây dựng môi trường tấn công, tự động hóa quá trình thực nghiệm, cũng như hỗ trợ thu thập và phân tích dữ liệu log. Cụ thể, hệ thống phần mềm được triển khai trên máy tấn công, máy chủ và máy mục tiêu như bảng:
 
 **Bảng 3: Công cụ thực hiện tấn công vét cạn mật khẩu**
@@ -42,9 +44,11 @@ Trước khi tiến hành mô phỏng và đánh giá kịch bản tấn công, 
 ### 2.2. Kịch bản tấn công từ chối dịch vụ (DoS)
 
 **a) Mục tiêu**
+
 Trong môi trường thực nghiệm, kịch bản này mô phỏng một cuộc tấn công từ chối dịch vụ bằng phương thức TCP SYN Flood kết hợp mạo danh IP (IP Spoofing) nhắm vào máy mục tiêu Ubuntu Client có địa chỉ IP `192.168.111.167`. Mục đích của kịch bản là phát hiện tấn công DoS thông qua Suricata IDS kết hợp với Wazuh để giám sát tập trung, phục vụ giám sát và phân tích.
 
 **b) Công cụ sử dụng**
+
 Trước khi tiến hành mô phỏng và đánh giá kịch bản tấn công, việc lựa chọn và chuẩn bị các phần mềm, công cụ hỗ trợ là bước quan trọng nhằm bảo đảm quá trình thực nghiệm diễn ra chính xác và hiệu quả. Các phần mềm được sử dụng bao gồm những công cụ phục vụ cho việc giả lập luồng tấn công phân tán, bắt gói tin tầng mạng, cũng như hỗ trợ thu thập và phân tích dữ liệu log tập trung. Cụ thể, hệ thống phần mềm và công cụ triển khai cho kịch bản DoS được thể hiện chi tiết tại bảng:
 
 **Bảng 4: Công cụ thực hiện tấn công từ chối dịch vụ**
@@ -61,9 +65,11 @@ Trước khi tiến hành mô phỏng và đánh giá kịch bản tấn công, 
 ### 2.3. Kịch bản phát hiện tệp tin độc hại
 
 **a) Mục tiêu**
+
 Trong môi trường thực nghiệm, kịch bản này mô phỏng hành vi phát tán tệp tin độc hại thông qua việc đưa mã độc dòng Mirai vào thư mục giám sát `/tmp/yara/malware/` trên máy Ubuntu Client. Mục đích của kịch bản nhằm chứng minh năng lực giám sát tính toàn vẹn tệp tin theo thời gian thực kết hợp với sức mạnh của công cụ quét chữ ký mã độc YARA, từ đó kích hoạt cơ chế Active Response tự động xử lý và đẩy cảnh báo tập trung về hệ thống Wazuh để theo dõi và phân tích.
 
 **b) Công cụ sử dụng**
+
 Trước khi tiến hành mô phỏng và đánh giá kịch bản, việc chuẩn bị các phân hệ chức năng và luật quét là bước quyết định nhằm đảm bảo luồng phản ứng tự động diễn ra chính xác. Các phần mềm và công cụ được triển khai cho kịch bản phát hiện mã độc được thể hiện chi tiết tại bảng dưới đây:
 
 **Bảng 5: Công cụ thực hiện phát hiện tệp tin độc hại**
@@ -150,9 +156,9 @@ Màn hình quản lý sự kiện của Wazuh tổ chức dữ liệu theo cấu
 Để triển khai thực nghiệm mô phỏng cuộc tấn công từ chối dịch vụ bằng phương thức TCP SYN Flood kết hợp mạo danh IP (IP Spoofing), quá trình thực hiện được chia làm 3 bước:
 
 - *Bước 1: Khởi động hệ thống bắt gói tin Wireshark trên máy vật lý (Host)*
-    - Trên hệ điều hành máy thật (Windows Host), khởi chạy phần mềm Wireshark.
-    - Tại giao diện danh sách card mạng, tiến hành nhấp đúp chuột vào card mạng ảo trung gian mang tên VMware Network Adapter VMnet8 (đây là card mạng chịu trách nhiệm định tuyến luồng dữ liệu cấu hình theo chế độ NAT Mode của VMware).
-    - Hệ thống Wireshark bắt đầu lắng nghe và ghi nhận lưu lượng mạng ở trạng thái thời gian thực.
+    + Trên hệ điều hành máy thật (Windows Host), khởi chạy phần mềm Wireshark.
+    + Tại giao diện danh sách card mạng, tiến hành nhấp đúp chuột vào card mạng ảo trung gian mang tên VMware Network Adapter VMnet8 (đây là card mạng chịu trách nhiệm định tuyến luồng dữ liệu cấu hình theo chế độ NAT Mode của VMware).
+    + Hệ thống Wireshark bắt đầu lắng nghe và ghi nhận lưu lượng mạng ở trạng thái thời gian thực.
 
 - *Bước 2: Kích hoạt chế độ giám sát mạng trên máy mục tiêu*
 
@@ -169,29 +175,30 @@ Màn hình quản lý sự kiện của Wazuh tổ chức dữ liệu theo cấu
 Trong suốt quá trình cuộc tấn công diễn ra, luồng traffic độc hại dội vào hệ thống được ghi nhận và xử lý phân tầng chặt chẽ qua các giai đoạn từ hiệu năng tài nguyên phần cứng, bắt gói tin mạng thô đến phân tích log tập trung:
 
 - *Giai đoạn 1: Đánh giá biến động hiệu năng tài nguyên phần cứng máy client*
-    - Ta giám sát hệ thống trên máy Ubuntu Client, trạng thái cạn kiệt tài nguyên của máy chủ đã lộ rõ do phải xử lí lượng traffic quá lớn.
+
+    + Ta giám sát hệ thống trên máy Ubuntu Client, trạng thái cạn kiệt tài nguyên của máy chủ đã lộ rõ do phải xử lí lượng traffic quá lớn.
 
     ![Hình 3.7: Tài nguyên của máy client biến động](./images/hinh-3-7.png)
 
-    - Phân tích thông số phần cứng từ thực nghiệm:
+    + Phân tích thông số phần cứng từ thực nghiệm:
         - Tiến trình Suricata (PID 5805) chiếm dụng hiệu năng xử lý ở ngưỡng cực hạn lên tới 110.6% CPU và ngốn 19.7% bộ nhớ RAM. Điều này phản ánh phân hệ IDS đang phải vắt kiệt công suất phần cứng để bóc tách luồng traffic rác nhằm kịp thời ghi nhật ký sự kiện.
         - Đặc biệt, tiến trình quản lý các Ngắt mềm của nhân hệ điều hành `ksoftirqd` (PID 14) tăng vọt lên mức 78,2% CPU. Thông số này chứng minh hàng vạn gói tin tràn ngập vào card mạng trong thời gian ngắn đã ép nhân kernel của Linux phải liên tục sinh ngắt để tiếp nhận dữ liệu, gây ra tình trạng nghẽn mạch logic hệ thống. Máy chủ rơi vào trạng thái cạn kiệt tài nguyên và mất năng lực phản hồi.
 
 - *Giai đoạn 2: Phân tích và bắt gói tin mạng thô (Wireshark & Suricata IDS)*
-    - Do hệ thống phòng Lab ảo hóa được định tuyến thông qua switch ảo VMnet8 theo chế độ NAT Mode, công cụ Wireshark khởi chạy trên máy vật lý (Windows Host) đã chụp lại toàn bộ dữ liệu thô chuyển dịch giữa hai máy ảo.
-    - Khi quản trị viên áp dụng bộ lọc điều kiện chuyên sâu, hệ thống lập tức cô lập và hiển thị một loạt gói tin màu xám. Tại cột Source, hệ thống vạch trần hàng loạt địa chỉ IP nguồn ngẫu nhiên đang liên tục gửi yêu cầu khởi tạo kết nối TCP SYN với tần suất mili-giây nhắm vào địa chỉ IP đích `192.168.111.167` tại cổng dịch vụ SSH (Port 22). Điều này chứng minh đây một cuộc tấn công từ chối dịch vụ phân tán diện rộng.
+    + Do hệ thống phòng Lab ảo hóa được định tuyến thông qua switch ảo VMnet8 theo chế độ NAT Mode, công cụ Wireshark khởi chạy trên máy vật lý (Windows Host) đã chụp lại toàn bộ dữ liệu thô chuyển dịch giữa hai máy ảo.
+    + Khi quản trị viên áp dụng bộ lọc điều kiện chuyên sâu, hệ thống lập tức cô lập và hiển thị một loạt gói tin màu xám. Tại cột Source, hệ thống vạch trần hàng loạt địa chỉ IP nguồn ngẫu nhiên đang liên tục gửi yêu cầu khởi tạo kết nối TCP SYN với tần suất mili-giây nhắm vào địa chỉ IP đích `192.168.111.167` tại cổng dịch vụ SSH (Port 22). Điều này chứng minh đây một cuộc tấn công từ chối dịch vụ phân tán diện rộng.
 
     ![Hình 3.8: Một số địa chỉ IP ngẫu nhiên đang gửi gói tin vào địa chỉ máy client](./images/hinh-3-8.png)
 
-    - Song song với đó, tại máy trạm nạn nhân, công cụ Suricata IDS liên tục thực hiện phân tích sâu các gói tin. Ngay khi lưu lượng cờ `[SYN]` dội vào card mạng vượt quá ngưỡng thiết lập an toàn trong file quy tắc cục bộ, Suricata lập tức định danh hành vi bất thường, biên dịch sự kiện xâm nhập mạng và xuất trực tiếp log thô định dạng JSON vào tệp tin nhật ký bảo mật tại đường dẫn: `/var/log/suricata/eve.json`.
+    + Song song với đó, tại máy trạm nạn nhân, công cụ Suricata IDS liên tục thực hiện phân tích sâu các gói tin. Ngay khi lưu lượng cờ `[SYN]` dội vào card mạng vượt quá ngưỡng thiết lập an toàn trong file quy tắc cục bộ, Suricata lập tức định danh hành vi bất thường, biên dịch sự kiện xâm nhập mạng và xuất trực tiếp log thô định dạng JSON vào tệp tin nhật ký bảo mật tại đường dẫn: `/var/log/suricata/eve.json`.
 
 - *Giai đoạn 3: Thu thập và chuẩn hoá dữ liệu của phân hệ Wazuh Agent*
-    - Tiến trình `wazuh-logcollector` chạy ngầm tại Endpoint liên tục giám sát tệp tin `/var/log/suricata/eve.json` theo cơ chế thời gian thực.
-    - Ngay khi Suricata kết xuất bản ghi cấu trúc mới, Wazuh Agent lập tức thực hiện đọc, đóng gói luồng dữ liệu độc hại này thành các bản tin JSON bảo mật và truyền tải tập trung về trung tâm xử lý dữ liệu (Wazuh Server) thông qua giao thức mã hóa qua cổng dịch vụ 1514/UDP.
+    + Tiến trình `wazuh-logcollector` chạy ngầm tại Endpoint liên tục giám sát tệp tin `/var/log/suricata/eve.json` theo cơ chế thời gian thực.
+    + Ngay khi Suricata kết xuất bản ghi cấu trúc mới, Wazuh Agent lập tức thực hiện đọc, đóng gói luồng dữ liệu độc hại này thành các bản tin JSON bảo mật và truyền tải tập trung về trung tâm xử lý dữ liệu (Wazuh Server) thông qua giao thức mã hóa qua cổng dịch vụ 1514/UDP.
 
 - *Giai đoạn 4: Phân tích tương quan luật tại phân hệ Wazuh Server*
-    - Tại máy chủ trung tâm, luồng dữ liệu thô từ Agent gửi sang được đẩy qua phân hệ giải mã (Decoders). Tại đây, cấu trúc cú pháp JSON của Suricata được bóc tách hoàn toàn thành các trường thông tin logic có cấu trúc rõ ràng.
-    - Dữ liệu sau chuẩn hóa tiếp tục đi vào bộ lọc phân tích luật. Nhận diện chuỗi cảnh báo tương thích phản ánh tấn công nghẽn hàng đợi kết nối, Wazuh Server tự động đối khớp mạng và kích hoạt mã luật bảo mật chuyên trách tầng mạng.
+    + Tại máy chủ trung tâm, luồng dữ liệu thô từ Agent gửi sang được đẩy qua phân hệ giải mã (Decoders). Tại đây, cấu trúc cú pháp JSON của Suricata được bóc tách hoàn toàn thành các trường thông tin logic có cấu trúc rõ ràng.
+    + Dữ liệu sau chuẩn hóa tiếp tục đi vào bộ lọc phân tích luật. Nhận diện chuỗi cảnh báo tương thích phản ánh tấn công nghẽn hàng đợi kết nối, Wazuh Server tự động đối khớp mạng và kích hoạt mã luật bảo mật chuyên trách tầng mạng.
 
 **c) Phân tích và trực quan hoá kết quả trên Dashboard**
 
@@ -216,7 +223,7 @@ Màn hình quản lý chuyên trách tổ chức dữ liệu theo cấu trúc b�
 
 Để thực nghiệm mô phỏng cơ chế tự động phát hiện mã độc dựa trên tương quan FIM và YARA, quá trình triển khai trên máy mục tiêu (Ubuntu Client) được thực hiện tuần tự qua các bước cấu hình và thực thi hệ thống như sau:
 
-**Bước 1: Khởi tạo cấu trúc thư mục lưu trữ chuyên trách cục bộ**
+*Bước 1: Khởi tạo cấu trúc thư mục lưu trữ chuyên trách cục bộ*
 
 Do cấu trúc thư mục tạm mặc định có thể bị xóa hoặc chưa đồng bộ, quản trị viên sử dụng lệnh `mkdir` với tham số `-p` để khởi tạo chuỗi thư mục con `/tmp/yara/malware/`. Tham số này đảm bảo nếu thư mục cha chưa tồn tại, hệ thống sẽ tự động tạo lập để tránh các lỗi thiếu đường dẫn hệ thống:
 
