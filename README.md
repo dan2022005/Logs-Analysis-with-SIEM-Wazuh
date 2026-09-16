@@ -94,7 +94,7 @@ Trước khi tiến hành mô phỏng và đánh giá kịch bản, việc chu�
 - **Bước 1: Chuẩn bị danh sách từ điển mật khẩu trên máy tấn công (Kali Linux)**
   Trong bài thực nghiệm này, để tối ưu hóa thời gian demo nhưng vẫn đảm bảo tính thực tế, kẻ tấn công tạo một file mật khẩu chứa các chuỗi ký tự thông dụng, trong đó có chèn một mật khẩu chính xác của máy mục tiêu vào giữa danh sách.
 
-  ![Hình 3.2: File mật khẩu để tấn công](./images/hinh-3-2.png)
+  ![Hình 3.2: File mật khẩu để tấn công](./docs/images/hinh-3-2.png)
 
 - **Bước 2: Cấu hình trình nghe nhật ký trên máy mục tiêu (Ubuntu Client)**
   Trên máy Ubuntu truy cập vào Terminal dưới quyền root, thực thi lệnh giám sát luồng ghi nhật ký xác thực hệ thống theo thời gian thực để chuẩn bị quan sát biến động dữ liệu.
@@ -102,7 +102,7 @@ Trước khi tiến hành mô phỏng và đánh giá kịch bản, việc chu�
 - **Bước 3: Khởi động luồng tấn công vét cạn bằng công cụ Hydra từ máy Kali Linux**
   Trên máy Kali Linux, kẻ tấn công mở Terminal và sử dụng công cụ Hydra để thực hiện hành vi dò quét mật khẩu tự động vào dịch vụ OpenSSH đang chạy trên cổng 22 của nạn nhân.
 
-  ![Hình 3.3: Quá trình dò quét mật khẩu bằng Hydra](./images/hinh-3-3.png)
+  ![Hình 3.3: Quá trình dò quét mật khẩu bằng Hydra](./docs/images/hinh-3-3.png)
 
 **b) Ghi nhận và xử lý log trong quá trình thực hiện kịch bản**
 
@@ -112,7 +112,7 @@ Trong suốt tiến trình thực nghiệm kịch bản tấn công vét cạn m
 
 Trong hệ điều hành Ubuntu, tệp tin `/var/log/auth.log` là nơi chuyên trách ghi nhận toàn bộ các sự kiện liên quan đến xác thực hệ thống, bao gồm trạng thái phân hệ bảo mật và tiến trình quản lý kết nối từ xa. Cứ mỗi một yêu cầu đăng nhập sai do công cụ Hydra rải mật khẩu tự động nhắm vào tài khoản client, tiến trình sshd lập tức từ chối phiên và xuất trực tiếp một dòng bản ghi sự kiện vào tệp `/var/log/auth.log`.
 
-  ![Hình 3.4: Trích xuất tệp nhật ký /var/log/auth.log ghi nhận quá trình tấn công brute force SSH](./images/hinh-3-4.png)
+  ![Hình 3.4: Trích xuất tệp nhật ký /var/log/auth.log ghi nhận quá trình tấn công brute force SSH](./docs/images/hinh-3-4.png)
     
 *Giai đoạn thứ hai: Thu thập và chuyển tiếp của Wazuh Agent.* 
 
@@ -132,7 +132,7 @@ Dữ liệu sau chuẩn hóa được đẩy qua bộ lọc phân tích luật. 
 
 Sau khi các bộ luật bị kích hoạt trên máy chủ, toàn bộ dữ liệu cảnh báo lập tức được đồng bộ và lập chỉ mục lưu trữ tập trung, phục vụ công tác trực quan hóa và điều tra sự cố thông qua giao diện đồ họa Wazuh Dashboard.
 
-![Hình 3.5: Giao diện Dashboard hiển thị cảnh báo tấn công SSH](./images/hinh-3-5.png)
+![Hình 3.5: Giao diện Dashboard hiển thị cảnh báo tấn công SSH](./docs/images/hinh-3-5.png)
 
 Màn hình quản lý sự kiện của Wazuh tổ chức dữ liệu theo cấu trúc bảng cực kỳ tường minh với các cột thông tin then chốt, ghi lại tất cả "dấu vết" của cuộc tấn công brute-force:
 
@@ -168,7 +168,7 @@ Màn hình quản lý sự kiện của Wazuh tổ chức dữ liệu theo cấu
 
     Trên máy tấn công Kali Linux, kẻ tấn công mở Terminal và sử dụng công cụ Hping3 để phát tán hàng triệu gói tin TCP SYN giả mạo IP nguồn vào cổng dịch vụ OpenSSH (Port 22) của nạn nhân.
 
-![Hình 3.6: Quá trình tấn công Dos](./images/hinh-3-6.png)
+![Hình 3.6: Quá trình tấn công Dos](./docs/images/hinh-3-6.png)
 
 **b) Ghi nhận và xử lí log trong quá trình thực hiện kịch bản**
 
@@ -178,7 +178,7 @@ Trong suốt quá trình cuộc tấn công diễn ra, luồng traffic độc h�
 
     + Ta giám sát hệ thống trên máy Ubuntu Client, trạng thái cạn kiệt tài nguyên của máy chủ đã lộ rõ do phải xử lí lượng traffic quá lớn.
 
-    ![Hình 3.7: Tài nguyên của máy client biến động](./images/hinh-3-7.png)
+    ![Hình 3.7: Tài nguyên của máy client biến động](./docs/images/hinh-3-7.png)
 
     + Phân tích thông số phần cứng từ thực nghiệm:
         - Tiến trình Suricata (PID 5805) chiếm dụng hiệu năng xử lý ở ngưỡng cực hạn lên tới 110.6% CPU và ngốn 19.7% bộ nhớ RAM. Điều này phản ánh phân hệ IDS đang phải vắt kiệt công suất phần cứng để bóc tách luồng traffic rác nhằm kịp thời ghi nhật ký sự kiện.
@@ -188,7 +188,7 @@ Trong suốt quá trình cuộc tấn công diễn ra, luồng traffic độc h�
     + Do hệ thống phòng Lab ảo hóa được định tuyến thông qua switch ảo VMnet8 theo chế độ NAT Mode, công cụ Wireshark khởi chạy trên máy vật lý (Windows Host) đã chụp lại toàn bộ dữ liệu thô chuyển dịch giữa hai máy ảo.
     + Khi quản trị viên áp dụng bộ lọc điều kiện chuyên sâu, hệ thống lập tức cô lập và hiển thị một loạt gói tin màu xám. Tại cột Source, hệ thống vạch trần hàng loạt địa chỉ IP nguồn ngẫu nhiên đang liên tục gửi yêu cầu khởi tạo kết nối TCP SYN với tần suất mili-giây nhắm vào địa chỉ IP đích `192.168.111.167` tại cổng dịch vụ SSH (Port 22). Điều này chứng minh đây một cuộc tấn công từ chối dịch vụ phân tán diện rộng.
 
-    ![Hình 3.8: Một số địa chỉ IP ngẫu nhiên đang gửi gói tin vào địa chỉ máy client](./images/hinh-3-8.png)
+    ![Hình 3.8: Một số địa chỉ IP ngẫu nhiên đang gửi gói tin vào địa chỉ máy client](./docs/images/hinh-3-8.png)
 
     + Song song với đó, tại máy trạm nạn nhân, công cụ Suricata IDS liên tục thực hiện phân tích sâu các gói tin. Ngay khi lưu lượng cờ `[SYN]` dội vào card mạng vượt quá ngưỡng thiết lập an toàn trong file quy tắc cục bộ, Suricata lập tức định danh hành vi bất thường, biên dịch sự kiện xâm nhập mạng và xuất trực tiếp log thô định dạng JSON vào tệp tin nhật ký bảo mật tại đường dẫn: `/var/log/suricata/eve.json`.
 
@@ -204,7 +204,7 @@ Trong suốt quá trình cuộc tấn công diễn ra, luồng traffic độc h�
 
 Sau khi máy chủ xử lý và lập chỉ mục thành công, toàn bộ dữ liệu lưu lượng cuộc tấn công DoS được đồng bộ trực quan hóa lên giao diện đồ họa Wazuh Dashboard.
 
-![Hình 3.9: Giao diện Dashboard hiển thị cảnh báo tấn công Dos](./images/hinh-3-9.png)
+![Hình 3.9: Giao diện Dashboard hiển thị cảnh báo tấn công Dos](./docs/images/hinh-3-9.png)
 
 Màn hình quản lý chuyên trách tổ chức dữ liệu theo cấu trúc bảng cực kỳ khoa học, cung cấp toàn bộ các chứng cứ đắt giá để phục vụ công tác điều tra sự cố:
 
@@ -260,7 +260,7 @@ Tại máy chủ trung tâm, luồng dữ liệu thô từ Agent gửi sang đư
 
 Kịch bản `yara.sh` hoạt động dưới quyền tối cao, gọi tiến trình `/usr/local/bin/yara` tiến hành bóc tách và đọc sâu vào cấu trúc dữ liệu tệp tin dựa trên tập luật đối khớp quy tắc chữ ký mã độc `yara_rules.yar`. Hệ thống định danh chính xác tệp tin trùng khớp với mẫu signature của dòng Mirai và kết xuất trực tiếp dòng thông báo vào tệp log Active Response cục bộ.
 
-![Hình 3.10: YARA quét chữ kí và so khớp với mẫu mã độc](./images/hinh-3-10.png)
+![Hình 3.10: YARA quét chữ kí và so khớp với mẫu mã độc](./docs/images/hinh-3-10.png)
 
 **Giai đoạn 4: Chuẩn hóa dữ liệu và nâng cấp độ cảnh báo tập trung trên SIEM**
 
@@ -270,7 +270,7 @@ Bản ghi INFO từ file log cục bộ tiếp tục được Agent đẩy ngư�
 
 Sau khi máy chủ xử lý dữ liệu, sự kiện xâm nhập lập tức được đồng bộ hóa và lưu trữ tập trung, phục vụ công tác giám sát trực quan thông qua giao diện đồ họa Wazuh Dashboard:
 
-![Hình 3.11: Giao diện dashboard hiển thị thay đổi file và so khớp mẫu mã độc](./images/hinh-3-11.png)
+![Hình 3.11: Giao diện dashboard hiển thị thay đổi file và so khớp mẫu mã độc](./docs/images/hinh-3-11.png)
 
 Màn hình quản lý sự kiện Threat Hunting tổ chức dữ liệu theo cấu trúc bảng khoa học, ghi lại toàn bộ "dấu vết" phản ứng tự động của hệ thống:
 
