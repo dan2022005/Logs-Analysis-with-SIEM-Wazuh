@@ -307,3 +307,23 @@ Sau khi triển khai thành công mô hình kịch bản tấn công vét cạn 
 - **Nguy cơ gây nhiễu loạn và quá tải dữ liệu:** Trong kịch bản tấn công TCP SYN Flood, tốc độ dội bom luồng dữ liệu liên tục sinh ra hàng vạn gói tin chỉ trong vài giây. Nếu cấu hình bộ giới hạn ngưỡng của Suricata IDS không được tối ưu hóa cẩn thận, hệ thống rất dễ rơi vào tình trạng quá tải dữ liệu log rác, gây nghẽn băng thông truyền tải từ Agent về Server.
 
 - **Kịch bản mô phỏng chưa bao quát toàn diện chuỗi tấn công:** Các kịch bản tấn công thực nghiệm mới chỉ giả lập các kỹ thuật xâm nhập cơ bản từ bên ngoài. Mô hình chưa mở rộng và bao quát được các hành vi tấn công nội bộ phức tạp hơn.
+---
+## Tài liệu tham khảo
+
+[1] Cuong N. X. (2023, July 9). Phát hiện xâm nhập mạng với Suricata. NGUYEN XUAN CUONG. https://nxcuong.ued.vn/vi/news/security/phat-hien-xam-nhap-mang-voi-suricata-97.html
+
+[2] Gupta, R. (2024). Security Monitoring with Wazuh: A hands-on guide to effective enterprise security using real-life use cases in Wazuh. Packt Publishing.
+
+[3] González-Granadillo, G. (n.d.). Security Information and Event Management (SIEM): Analysis, Trends, and Usage in Critical Infrastructures.
+
+[4] Wazuh. (n.d.). Wazuh documentation. Wazuh.com. Retrieved May 9, 2026, from https://documentation.wazuh.com/current/index.html
+
+[5] VNPT Cyber Immunity. (2023, August 30). Wazuh - Nền tảng bảo mật mã nguồn mở. https://sec.vnpt.vn/2023/08/wazuh-nen-tang-bao-mat-ma-nguon-mo/
+
+[6] VNPT Cyber Immunity. (2024, June 14). YARA – Công cụ phát hiện phần mềm độc hại. https://sec.vnpt.vn/2024/06/yara-cong-cu-phat-hien-phan-mem-doc-haii/
+
+[7] VNPT Cyber Immunity. (2024, June 14). YARA – Công cụ phát hiện phần mềm độc hại. https://sec.vnpt.vn/2024/06/yara-cong-cu-phat-hien-phan-mem-doc-haii/
+
+---
+
+> **Lưu ý:** Repository này được tạo ra với mục đích học tập và nghiên cứu.
