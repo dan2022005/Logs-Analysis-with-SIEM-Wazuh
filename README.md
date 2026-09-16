@@ -1,4 +1,4 @@
-# TRIỂN KHAI PHÂN TÍCH LOG VỚI WAUZH VÀ ĐÁNH GIÁ HỆ THỐNG ĐÃ ĐƯỢC TRIỂN KHAI
+# TRIỂN KHAI PHÂN TÍCH LOG VỚI WAZUH VÀ ĐÁNH GIÁ HỆ THỐNG ĐÃ ĐƯỢC TRIỂN KHAI
 
 ## 1. Môi trường thực nghiệm
 
