@@ -4,7 +4,7 @@
 
 ### 1.1. Mô hình tổng quát hệ thống
 
-![Hình 3.1: Mô hình triển khai hệ thống](./images/hinh-3-1.png)
+![Hình 3.1: Mô hình triển khai hệ thống](./docs/images/hinh-3-1.png)
 
 ### 1.2. Cấu hình phần cứng
 
